@@ -1,5 +1,6 @@
 """
 CMPS 2200  Recitation 2
+Name: Chuong Hoang Pham
 """
 
 ### the only imports needed are here
@@ -18,6 +19,9 @@ def simple_work_calc(n, a, b):
 	Returns: the value of W(n).
 	"""
 	# TODO
+	if (n <= 1):
+		return n
+	return a * simple_work_calc(n//b, a, b) + n
 	pass
 
 def work_calc(n, a, b, f):
@@ -33,6 +37,9 @@ def work_calc(n, a, b, f):
 	Returns: the value of W(n).
 	"""
 	# TODO
+	if(n <= 1):
+		return f(n)
+	return a * work_calc(n//b, a, b, f) + f(n)
 	pass
 
 def span_calc(n, a, b, f):
@@ -48,6 +55,10 @@ def span_calc(n, a, b, f):
 	Returns: the value of W(n).
 	"""
 	# TODO
+	if(n <= 1):
+		return f(n)
+	return span_calc(n//b, a, b, f) + f(n)
+
 	pass
 
 def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
@@ -94,6 +105,13 @@ def test_compare_work():
     
 	# create work_fn1
 	# create work_fn2
+	def work_calc_1 (a, b, f):
+		def work_calc_2(n):
+			return work_calc(n, a, b, f)
+		return work_calc_2
+	
+	work_fn1 = work_calc_1(a = 2, b = 2, f = lambda n: 1)
+	work_fn2 = work_calc_1(a = 2, b = 2, f = lambda n: n*n)
 	
 	res = compare_work(work_fn1, work_fn2)
 	print_work_results(res)
@@ -122,3 +140,5 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 			span_fn2
 			))
 	return result
+
+test_compare_work()
