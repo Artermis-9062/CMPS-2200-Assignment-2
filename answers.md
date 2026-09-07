@@ -11,15 +11,15 @@ Place all written answers from `recitation-02.md` here for easier grading.
 - **4) (3 points)** Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = n$, and $f(n) = n^2$  with $a=2$ and $b=2$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
  - $f(n) = 1: $
 
-    $$ W(n) = \sum_{i = 0}^{\lg n} 2^{i} = \frac{2^{\lg n + 1} - 1}{2-1} = 2 \cdot n - 1 $$
+    $$ W(n) = \sum_{i = 0}^{\lg n} 2^{i} = \frac{2^{\lg n + 1} - 1}{2-1} = 2 \cdot n - 1 \in \Theta(n)$$
 
   - $f(n) = n: $
     
-    $$ W(n) = \sum_{i = 0}^{\lg n} (n) = n \cdot (\lg n + 1) $$
+    $$ W(n) = \sum_{i = 0}^{\lg n} (n) = n \cdot (\lg n + 1) \in \Theta(n \lg n) $$
 
   - $f(n) = n^2: $
 
-  $$ W(n) = \sum_{i = 0}{\lg n} (n^2 \cdot \frac{1}{2^{i}}) = n^2 \cdot \frac{1 - \frac{1}{2}^{\lg n + 1}}{0.5} = 2n^2 - n $$
+  $$ W(n) = \sum_{i = 0}^{\lg n} (n^2 \cdot \frac{1}{2^{i}}) = n^2 \cdot \frac{1 - \frac{1}{2}^{\lg n + 1}}{0.5} = 2n^2 - n \in \Theta(n^2)$$
 
 - **5) (4 points)** Now that you have a nice way to empirically 
   generate values of $W(n)$, we can look at the relationship 
